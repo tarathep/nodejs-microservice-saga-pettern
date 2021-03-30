@@ -1,10 +1,11 @@
 const uuidv1 = require('uuid/v1');
 
 const HomeCheckInModel = require('../Model/homeCheckInModel');
-const Producer = require('../../../kafkaBroker/kafkaHandler/Producer');
+const Producer = require('../../../../Libs/kafkaBroker/kafkaHandler/Producer');
 
 const CreateHomeCheckIn = async (req,res) => {
     try{
+        //COMBINE DATA TO MODEL
         const internetNo = req.body.internetNo;
         const orderNo = req.body.orderNo;
         const staffCode = req.body.staffCode;
@@ -15,10 +16,13 @@ const CreateHomeCheckIn = async (req,res) => {
 
         const homeCheckIn = await new HomeCheckInModel({internetNo : internetNo , orderNo : orderNo , staffCode : staffCode , jobStatus : jobStatus , checkinLatitude : checkinLatitude , checkinLongitude : checkinLongitude , checkinDate : checkinDate})
 
+        //SAVE INTO PERSISTACE DATA (MOGODB)
         await homeCheckIn.save();
         
+        //RESPOSNE API SUCCESS
         res.send(homeCheckIn)
 
+        //PRODUCE MESSAGE TO FBB
         Producer({
             topic : 'HOME_CHECKIN_CREATED',
             payload : {

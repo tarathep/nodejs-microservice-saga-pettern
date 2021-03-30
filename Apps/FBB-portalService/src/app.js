@@ -1,13 +1,12 @@
-const Consumer = require('../../kafkaBroker/kafkaHandler/Consumer');
+const Consumer = require('../../../Libs/kafkaBroker/kafkaHandler/Consumer');
 const eventHandler = require('./eventHandler');
 
 try {
-
+    //CONSUMEING MESSAGE
     const consumer = new Consumer();
-
     consumer.addTopics(["HOME_CHECKIN_CREATED"]).then(() => {
         consumer.consume(message => {
-            //console.log(message.value);
+            //SENDER MESSAGE TO EVENT
             eventHandler(JSON.parse(message.value));
         })
     })
