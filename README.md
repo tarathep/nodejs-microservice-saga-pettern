@@ -17,20 +17,6 @@
 # Demo Step
 An support technician SOA application that uses this approach would create case using a choreography-based saga that consists of the following steps:
 
-
-RAW DATA
-```json
-{
-    "internetNo": "8850049302",
-    "orderNo": "5960915_106347524.2",
-    "staffCode": "cs_eng_ftth",
-    "jobStatus": "homecheckedin",
-    "checkinLatitude": 13.7827811,
-    "checkinLongitude": 100.5465937,
-    "checkinDate": "2021-03-18 10:13:43"
-}
-```
-
 1. Client Request with CURL http://localhost:3000/api/SOA/home/checkin
 ```bash
 curl --location --request POST 'http://localhost:3000/api/SOA/home/checkin' \
