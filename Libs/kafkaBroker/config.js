@@ -1,5 +1,5 @@
 //global
-const brokers = "10.138.38.65:9092";
+const brokers = "dev.tarathep.com:9092";
 
 //consumer
 const options = {

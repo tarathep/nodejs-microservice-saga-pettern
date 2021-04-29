@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 
-mongoose.connect("mongodb://root:password@10.138.38.65:27017/SOA_HomeCheckInDB?authSource=admin",{ useNewUrlParser : true,useUnifiedTopology : true }).then(data =>{
+mongoose.connect("mongodb://root:passwordxz@dev.tarathep.com:27017/SOA_HomeCheckInDB?authSource=admin",{ useNewUrlParser : true,useUnifiedTopology : true }).then(data =>{
     //OPEN APIs for service
     app.post('/api/SOA/home/checkin',CreateHomeCheckIn);
     
