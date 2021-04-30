@@ -1,6 +1,6 @@
 const uuidv1 = require('uuid/v1');
 
-const HomeCheckInModel = require('../Model/homeCheckInModel');
+const HomeCheckInModel = require('../Model/homeCheckIn');
 const Producer = require('../../../../Libs/kafkaBroker/kafkaHandler/Producer');
 
 const CreateHomeCheckIn = async (req,res) => {
